@@ -7,60 +7,173 @@ using CoreGraphics;
 
 namespace bindingkhenshin
 {
-    // The first step to creating a binding is to add your native library ("libNativeLibrary.a")
-    // to the project by right-clicking (or Control-clicking) the folder containing this source
-    // file and clicking "Add files..." and then simply select the native library (or libraries)
-    // that you want to bind.
-    //
-    // When you do that, you'll notice that MonoDevelop generates a code-behind file for each
-    // native library which will contain a [LinkWith] attribute. MonoDevelop auto-detects the
-    // architectures that the native library supports and fills in that information for you,
-    // however, it cannot auto-detect any Frameworks or other system libraries that the
-    // native library may depend on, so you'll need to fill in that information yourself.
-    //
-    // Once you've done that, you're ready to move on to binding the API...
-    //
-    //
-    // Here is where you'd define your API definition for the native Objective-C library.
-    //
-    // For example, to bind the following Objective-C class:
-    //
-    //     @interface Widget : NSObject {
-    //     }
-    //
-    // The C# binding would look like this:
-    //
-    //     [BaseType (typeof (NSObject))]
-    //     interface Widget {
-    //     }
-    //
-    // To bind Objective-C properties, such as:
-    //
-    //     @property (nonatomic, readwrite, assign) CGPoint center;
-    //
-    // You would add a property definition in the C# interface like so:
-    //
-    //     [Export ("center")]
-    //     CGPoint Center { get; set; }
-    //
-    // To bind an Objective-C method, such as:
-    //
-    //     -(void) doSomething:(NSObject *)object atIndex:(NSInteger)index;
-    //
-    // You would add a method definition to the C# interface like so:
-    //
-    //     [Export ("doSomething:atIndex:")]
-    //     void DoSomething (NSObject object, int index);
-    //
-    // Objective-C "constructors" such as:
-    //
-    //     -(id)initWithElmo:(ElmoMuppet *)elmo;
-    //
-    // Can be bound as:
-    //
-    //     [Export ("initWithElmo:")]
-    //     IntPtr Constructor (ElmoMuppet elmo);
-    //
-    // For more information, see http://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/
-    //
+	using System;
+	using Foundation;
+	using UIKit;
+
+	[Static]
+	[Verify(ConstantsInterfaceAssociation)]
+	partial interface Constants
+	{
+		// extern double engineVersionNumber;
+		[Field("engineVersionNumber", "__Internal")]
+		double engineVersionNumber { get; }
+
+		// extern const unsigned char [] engineVersionString;
+		[Field("engineVersionString", "__Internal")]
+		byte[] engineVersionString { get; }
+	}
+
+	// @protocol ProcessHeader
+	[Protocol, Model]
+	interface ProcessHeader
+	{
+		// @required -(void)configureWithSubject:(NSString *)subject formattedAmountAsCurrency:(NSString *)amount merchantName:(NSString *)merchantName merchantImageURL:(NSString *)merchantImageURL paymentMethod:(NSString *)paymentMethod;
+		[Abstract]
+		[Export("configureWithSubject:formattedAmountAsCurrency:merchantName:merchantImageURL:paymentMethod:")]
+		void FormattedAmountAsCurrency(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod);
+	}
+
+	// @protocol ProcessExit
+	[Protocol, Model]
+	interface ProcessExit
+	{
+		// @required -(void)configureWithPaymentSubject:(NSString *)subject formattedAmountAsCurrency:(NSString *)amount merchantName:(NSString *)merchantName merchantImageURL:(NSString *)merchantImageURL paymentMethod:(NSString *)paymentMethod title:(NSString *)title message:(NSString *)message finish:(void (^)(void))finish;
+		[Abstract]
+		[Export("configureWithPaymentSubject:formattedAmountAsCurrency:merchantName:merchantImageURL:paymentMethod:title:message:finish:")]
+		void FormattedAmountAsCurrency(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod, string title, string message, Action finish);
+	}
+
+	// @interface KhenshinInterface : NSObject
+	[BaseType(typeof(NSObject))]
+	interface KhenshinInterface
+	{
+		// +(void)destroyManager;
+		[Static]
+		[Export("destroyManager")]
+		void DestroyManager();
+
+		// +(void)initWithNavigationBarCenteredLogo:(UIImage *)barCenteredLogo NavigationBarLeftSideLogo:(UIImage *)barLeftSideLogo automatonAPIURL:(NSURL *)automatonAPIURL cerebroAPIURL:(NSURL *)cerebroAPIURL processHeader:(UIView<ProcessHeader> *)processHeader processFailure:(UIViewController<ProcessExit> *)processFailure processSuccess:(UIViewController<ProcessExit> *)processSuccess processWarning:(UIViewController<ProcessExit> *)processWarning allowCredentialsSaving:(BOOL)allowCredentialsSaving mainButtonStyle:(KHMainButton)mainButtonStyle hideWebAddressInformationInForm:(BOOL)hideWebAddressInformationInForm useBarCenteredLogoInForm:(BOOL)useBarCenteredLogoInForm principalColor:(UIColor *)principalColor darkerPrincipalColor:(UIColor *)darkerPrincipalColor secondaryColor:(UIColor *)secondaryColor navigationBarTextTint:(UIColor *)navigationBarTextTint font:(UIFont *)font;
+		[Static]
+		[Export("initWithNavigationBarCenteredLogo:NavigationBarLeftSideLogo:automatonAPIURL:cerebroAPIURL:processHeader:processFailure:processSuccess:processWarning:allowCredentialsSaving:mainButtonStyle:hideWebAddressInformationInForm:useBarCenteredLogoInForm:principalColor:darkerPrincipalColor:secondaryColor:navigationBarTextTint:font:")]
+		void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, ProcessHeader processHeader, ProcessExit processFailure, ProcessExit processSuccess, ProcessExit processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font);
+
+		// +(void)initWithNavigationBarCenteredLogo:(UIImage *)barCenteredLogo NavigationBarLeftSideLogo:(UIImage *)barLeftSideLogo automatonAPIURL:(NSURL *)automatonAPIURL cerebroAPIURL:(NSURL *)cerebroAPIURL processHeader:(UIView<ProcessHeader> *)processHeader processFailure:(UIViewController<ProcessExit> *)processFailure processSuccess:(UIViewController<ProcessExit> *)processSuccess processWarning:(UIViewController<ProcessExit> *)processWarning allowCredentialsSaving:(BOOL)allowCredentialsSaving mainButtonStyle:(KHMainButton)mainButtonStyle hideWebAddressInformationInForm:(BOOL)hideWebAddressInformationInForm useBarCenteredLogoInForm:(BOOL)useBarCenteredLogoInForm principalColor:(UIColor *)principalColor darkerPrincipalColor:(UIColor *)darkerPrincipalColor secondaryColor:(UIColor *)secondaryColor navigationBarTextTint:(UIColor *)navigationBarTextTint font:(UIFont *)font skipExitPage:(BOOL)skipExitPage;
+		[Static]
+		[Export("initWithNavigationBarCenteredLogo:NavigationBarLeftSideLogo:automatonAPIURL:cerebroAPIURL:processHeader:processFailure:processSuccess:processWarning:allowCredentialsSaving:mainButtonStyle:hideWebAddressInformationInForm:useBarCenteredLogoInForm:principalColor:darkerPrincipalColor:secondaryColor:navigationBarTextTint:font:skipExitPage:")]
+		void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, ProcessHeader processHeader, ProcessExit processFailure, ProcessExit processSuccess, ProcessExit processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font, bool skipExitPage);
+
+		// +(BOOL)isRunningAutomaton;
+		[Static]
+		[Export("isRunningAutomaton")]
+		[Verify(MethodToProperty)]
+		bool IsRunningAutomaton { get; }
+
+		// +(void)isThereAnAutomatonForFingerPrint:(NSString *)fingerPrint completionHandler:(void (^)(BOOL))completionHandler;
+		[Static]
+		[Export("isThereAnAutomatonForFingerPrint:completionHandler:")]
+		void IsThereAnAutomatonForFingerPrint(string fingerPrint, Action<bool> completionHandler);
+
+		// +(void)removeAllCredentialsWithUser:(NSString *)userIdentifier;
+		[Static]
+		[Export("removeAllCredentialsWithUser:")]
+		void RemoveAllCredentialsWithUser(string userIdentifier);
+
+		// +(void)removeAllStoredCookiesForBankExternalId:(NSString *)externalId completionHandler:(void (^)())completionHandler;
+		[Static]
+		[Export("removeAllStoredCookiesForBankExternalId:completionHandler:")]
+		void RemoveAllStoredCookiesForBankExternalId(string externalId, Action completionHandler);
+
+		// +(void)removeCredentialsForBankExternalId:(NSString *)externalId userIdentifier:(NSString *)userIdentifier completionHandler:(void (^)())completionHandler;
+		[Static]
+		[Export("removeCredentialsForBankExternalId:userIdentifier:completionHandler:")]
+		void RemoveCredentialsForBankExternalId(string externalId, string userIdentifier, Action completionHandler);
+
+		// +(void)savedBanksWithCredentialsForUserIdentifier:(NSString *)userIdentifier completionHandler:(void (^)(NSArray *))completionHandler;
+		[Static]
+		[Export("savedBanksWithCredentialsForUserIdentifier:completionHandler:")]
+		void SavedBanksWithCredentialsForUserIdentifier(string userIdentifier, Action<NSArray> completionHandler);
+
+		// +(void)savedBanksWithCookiesForUserIdentifier:(NSString *)userIdentifier completionHandler:(void (^)(NSArray *))completionHandler;
+		[Static]
+		[Export("savedBanksWithCookiesForUserIdentifier:completionHandler:")]
+		void SavedBanksWithCookiesForUserIdentifier(string userIdentifier, Action<NSArray> completionHandler);
+
+		// +(void)startEngineWithPaymentExternalId:(NSString *)paymentExternalId userIdentifier:(NSString *)userIdentifier isExternalPayment:(BOOL)externalPayment success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure animated:(BOOL)animated;
+		[Static]
+		[Export("startEngineWithPaymentExternalId:userIdentifier:isExternalPayment:success:failure:animated:")]
+		void StartEngineWithPaymentExternalId(string paymentExternalId, string userIdentifier, bool externalPayment, Action<NSURL> success, Action<NSURL> failure, bool animated);
+
+		// +(void)startEngineWithPaymentExternalId:(NSString *)paymentExternalId userIdentifier:(NSString *)userIdentifier isExternalPayment:(BOOL)externalPayment success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure animated:(BOOL)animated navigationController:(UINavigationController *)navigationController;
+		[Static]
+		[Export("startEngineWithPaymentExternalId:userIdentifier:isExternalPayment:success:failure:animated:navigationController:")]
+		void StartEngineWithPaymentExternalId(string paymentExternalId, string userIdentifier, bool externalPayment, Action<NSURL> success, Action<NSURL> failure, bool animated, UINavigationController navigationController);
+
+		// +(void)startEngineWithPaymentNumericoCode:(NSString *)numericCode userIdentifier:(NSString *)userIdentifier isExternalPayment:(BOOL)externalPayment success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure animated:(BOOL)animated;
+		[Static]
+		[Export("startEngineWithPaymentNumericoCode:userIdentifier:isExternalPayment:success:failure:animated:")]
+		void StartEngineWithPaymentNumericoCode(string numericCode, string userIdentifier, bool externalPayment, Action<NSURL> success, Action<NSURL> failure, bool animated);
+
+		// +(void)startEngineWithPaymentNumericCode:(NSString *)numericCode withPaymentExternalId:(NSString *)paymentExternalId userIdentifier:(NSString *)userIdentifier isExternalPayment:(BOOL)externalPayment success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure animated:(BOOL)animated navigationController:(UINavigationController *)navigationController;
+		[Static]
+		[Export("startEngineWithPaymentNumericCode:withPaymentExternalId:userIdentifier:isExternalPayment:success:failure:animated:navigationController:")]
+		void StartEngineWithPaymentNumericCode(string numericCode, string paymentExternalId, string userIdentifier, bool externalPayment, Action<NSURL> success, Action<NSURL> failure, bool animated, UINavigationController navigationController);
+
+		// +(void)setAutomatonTimeout:(NSTimeInterval)timeout;
+		[Static]
+		[Export("setAutomatonTimeout:")]
+		void SetAutomatonTimeout(double timeout);
+
+		// +(void)setGoogleTracker:(id<GAITracker>)tracker;
+		[Static]
+		[Export("setGoogleTracker:")]
+		void SetGoogleTracker(GAITracker tracker);
+
+		// +(void)setPreferredStatusBarStyle:(UIStatusBarStyle)preferredStatusBarStyle;
+		[Static]
+		[Export("setPreferredStatusBarStyle:")]
+		void SetPreferredStatusBarStyle(UIStatusBarStyle preferredStatusBarStyle);
+
+		// +(void)setPrefersStatusBarHidden:(BOOL)prefersStatusBarHidden;
+		[Static]
+		[Export("setPrefersStatusBarHidden:")]
+		void SetPrefersStatusBarHidden(bool prefersStatusBarHidden);
+
+		// +(void)setOtherThanOwnerWillPayOnThisDevice:(BOOL)isOtherThanOwnerPayingOnThisDevice;
+		[Static]
+		[Export("setOtherThanOwnerWillPayOnThisDevice:")]
+		void SetOtherThanOwnerWillPayOnThisDevice(bool isOtherThanOwnerPayingOnThisDevice);
+
+		// +(void)setExitMessagesShouldUseRawValue:(BOOL)useRawValue;
+		[Static]
+		[Export("setExitMessagesShouldUseRawValue:")]
+		void SetExitMessagesShouldUseRawValue(bool useRawValue);
+
+		// +(void)startEngineWithAutomatonId:(NSString *)automatonId animated:(BOOL)animated parameters:(NSDictionary *)parameters userIdentifier:(NSString *)userIdentifier success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure;
+		[Static]
+		[Export("startEngineWithAutomatonId:animated:parameters:userIdentifier:success:failure:")]
+		void StartEngineWithAutomatonId(string automatonId, bool animated, NSDictionary parameters, string userIdentifier, Action<NSURL> success, Action<NSURL> failure);
+
+		// +(void)startEngineWithAutomatonId:(NSString *)automatonId animated:(BOOL)animated parameters:(NSDictionary *)parameters userIdentifier:(NSString *)userIdentifier navigationController:(UINavigationController *)navigationController success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure;
+		[Static]
+		[Export("startEngineWithAutomatonId:animated:parameters:userIdentifier:navigationController:success:failure:")]
+		void StartEngineWithAutomatonId(string automatonId, bool animated, NSDictionary parameters, string userIdentifier, UINavigationController navigationController, Action<NSURL> success, Action<NSURL> failure);
+
+		// +(void)startEngineWithAutomatonRequestId:(NSString *)automatonRequestId animated:(BOOL)animated userIdentifier:(NSString *)userIdentifier navigationController:(UINavigationController *)navigationController success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure;
+		[Static]
+		[Export("startEngineWithAutomatonRequestId:animated:userIdentifier:navigationController:success:failure:")]
+		void StartEngineWithAutomatonRequestId(string automatonRequestId, bool animated, string userIdentifier, UINavigationController navigationController, Action<NSURL> success, Action<NSURL> failure);
+
+		// +(void)startEngineWithAutomatonByFingerPrint:(NSString *)fingerPrint animated:(BOOL)animated userIdentifier:(NSString *)userIdentifier navigationController:(UINavigationController *)navigationController success:(void (^)(NSURL *))success failure:(void (^)(NSURL *))failure;
+		[Static]
+		[Export("startEngineWithAutomatonByFingerPrint:animated:userIdentifier:navigationController:success:failure:")]
+		void StartEngineWithAutomatonByFingerPrint(string fingerPrint, bool animated, string userIdentifier, UINavigationController navigationController, Action<NSURL> success, Action<NSURL> failure);
+
+		// +(BOOL)validateInitialization;
+		[Static]
+		[Export("validateInitialization")]
+		[Verify(MethodToProperty)]
+		bool ValidateInitialization { get; }
+	}
+
 }
