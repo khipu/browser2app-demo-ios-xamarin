@@ -22,6 +22,21 @@ namespace browser2appdemoiosxamarin
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
 
+            NSUserDefaults.StandardUserDefaults.SetBool(false, @"KH_SHOW_HOW_IT_WORKS");
+            NSUserDefaults.StandardUserDefaults.Synchronize();
+
+            System.Diagnostics.Debug.WriteLine("Pre ProcessHeader");
+            ProcessHeader p = NSBundle.MainBundle.LoadNib("PaymentProcessHeader", this, null).GetItem<ProcessHeader>(0);
+
+
+            KhenshinInterface.InitWithNavigationBarCenteredLogo(new UIImage(), new UIImage(),
+                                                                new NSUrl("https://servipag.browser2app.com/api/automata/"),
+                                                                new NSUrl("https://servipag.browser2app.com/api/automata/"),
+                                                                null,
+                                                                null, null, null, true, 2, false, false,
+                                                                UIColor.LightGray, UIColor.DarkGray, UIColor.Red, UIColor.White, null);
+
+            System.Diagnostics.Debug.WriteLine("Fin FinishedLaunching");
             return true;
         }
 
