@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using UIKit;
+using bindingkhenshin;
 
 namespace browser2appdemoiosxamarin
 {

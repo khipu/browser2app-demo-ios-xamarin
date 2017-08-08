@@ -107,5 +107,11 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\binding-khenshin\binding-khenshin.csproj">
+      <Project>{A98195C1-AD88-4839-AE85-87F63B56DE51}</Project>
+      <Name>binding-khenshin</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
