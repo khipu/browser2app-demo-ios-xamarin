@@ -31,27 +31,26 @@ namespace bindingkhenshin
 	}
 
 	// @protocol ProcessHeader
-    [BaseType(typeof(NSObject))]
-    [Model]
+    [BaseType(typeof(NSObject))]   // NSObject
+	[Protocol, Model]
 	interface ProcessHeader
 	{
 		// @required -(void)configureWithSubject:(NSString *)subject formattedAmountAsCurrency:(NSString *)amount merchantName:(NSString *)merchantName merchantImageURL:(NSString *)merchantImageURL paymentMethod:(NSString *)paymentMethod;
 		[Abstract]
 		[Export("configureWithSubject:formattedAmountAsCurrency:merchantName:merchantImageURL:paymentMethod:")]
-		void FormattedAmountAsCurrency(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod);
+		void ConfigureWithSubject(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod);
 	}
 
 	// @protocol ProcessExit
 
     [BaseType(typeof(NSObject))]
-	[Model]
-
+	[Protocol, Model]
 	interface ProcessExit
 	{
 		// @required -(void)configureWithPaymentSubject:(NSString *)subject formattedAmountAsCurrency:(NSString *)amount merchantName:(NSString *)merchantName merchantImageURL:(NSString *)merchantImageURL paymentMethod:(NSString *)paymentMethod title:(NSString *)title message:(NSString *)message finish:(void (^)(void))finish;
 		[Abstract]
 		[Export("configureWithPaymentSubject:formattedAmountAsCurrency:merchantName:merchantImageURL:paymentMethod:title:message:finish:")]
-		void FormattedAmountAsCurrency(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod, string title, string message, Action finish);
+        void ConfigureWithPaymentSubject(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod, string title, string message, NSObject finish); // Action
 	}
 
 	// @interface KhenshinInterface : NSObject
@@ -66,12 +65,12 @@ namespace bindingkhenshin
 		// +(void)initWithNavigationBarCenteredLogo:(UIImage *)barCenteredLogo NavigationBarLeftSideLogo:(UIImage *)barLeftSideLogo automatonAPIURL:(NSUrl *)automatonAPIURL cerebroAPIURL:(NSUrl *)cerebroAPIURL processHeader:(UIView<ProcessHeader> *)processHeader processFailure:(UIViewController<ProcessExit> *)processFailure processSuccess:(UIViewController<ProcessExit> *)processSuccess processWarning:(UIViewController<ProcessExit> *)processWarning allowCredentialsSaving:(BOOL)allowCredentialsSaving mainButtonStyle:(KHMainButton)mainButtonStyle hideWebAddressInformationInForm:(BOOL)hideWebAddressInformationInForm useBarCenteredLogoInForm:(BOOL)useBarCenteredLogoInForm principalColor:(UIColor *)principalColor darkerPrincipalColor:(UIColor *)darkerPrincipalColor secondaryColor:(UIColor *)secondaryColor navigationBarTextTint:(UIColor *)navigationBarTextTint font:(UIFont *)font;
 		[Static]
 		[Export("initWithNavigationBarCenteredLogo:NavigationBarLeftSideLogo:automatonAPIURL:cerebroAPIURL:processHeader:processFailure:processSuccess:processWarning:allowCredentialsSaving:mainButtonStyle:hideWebAddressInformationInForm:useBarCenteredLogoInForm:principalColor:darkerPrincipalColor:secondaryColor:navigationBarTextTint:font:")]
-        void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, ProcessHeader processHeader, ProcessExit processFailure, ProcessExit processSuccess, ProcessExit processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font);
+        void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, NSObject processHeader, NSObject processFailure, NSObject processSuccess, NSObject processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font);
 
 		// +(void)initWithNavigationBarCenteredLogo:(UIImage *)barCenteredLogo NavigationBarLeftSideLogo:(UIImage *)barLeftSideLogo automatonAPIURL:(NSUrl *)automatonAPIURL cerebroAPIURL:(NSUrl *)cerebroAPIURL processHeader:(UIView<ProcessHeader> *)processHeader processFailure:(UIViewController<ProcessExit> *)processFailure processSuccess:(UIViewController<ProcessExit> *)processSuccess processWarning:(UIViewController<ProcessExit> *)processWarning allowCredentialsSaving:(BOOL)allowCredentialsSaving mainButtonStyle:(KHMainButton)mainButtonStyle hideWebAddressInformationInForm:(BOOL)hideWebAddressInformationInForm useBarCenteredLogoInForm:(BOOL)useBarCenteredLogoInForm principalColor:(UIColor *)principalColor darkerPrincipalColor:(UIColor *)darkerPrincipalColor secondaryColor:(UIColor *)secondaryColor navigationBarTextTint:(UIColor *)navigationBarTextTint font:(UIFont *)font skipExitPage:(BOOL)skipExitPage;
 		[Static]
 		[Export("initWithNavigationBarCenteredLogo:NavigationBarLeftSideLogo:automatonAPIURL:cerebroAPIURL:processHeader:processFailure:processSuccess:processWarning:allowCredentialsSaving:mainButtonStyle:hideWebAddressInformationInForm:useBarCenteredLogoInForm:principalColor:darkerPrincipalColor:secondaryColor:navigationBarTextTint:font:skipExitPage:")]
-		void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, ProcessHeader processHeader, ProcessExit processFailure, ProcessExit processSuccess, ProcessExit processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font, bool skipExitPage);
+		void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, NSObject processHeader, NSObject processFailure, NSObject processSuccess, NSObject processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font, bool skipExitPage);
 
 		// +(BOOL)isRunningAutomaton;
 		[Static]

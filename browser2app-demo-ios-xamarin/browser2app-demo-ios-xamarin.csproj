@@ -94,6 +94,8 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="OperationProcessHeader.xib" />
+    <InterfaceDefinition Include="OperationProcessFailure.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -105,6 +107,14 @@
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperationProcessHeader.cs" />
+    <Compile Include="OperationProcessHeader.designer.cs">
+      <DependentUpon>OperationProcessHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperationProcessFailure.cs" />
+    <Compile Include="OperationProcessFailure.designer.cs">
+      <DependentUpon>OperationProcessFailure.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

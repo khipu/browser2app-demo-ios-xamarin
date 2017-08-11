@@ -1,6 +1,7 @@
 ﻿using System;
 
 using UIKit;
+using bindingkhenshin;
 
 namespace browser2appdemoiosxamarin
 {
@@ -8,7 +9,9 @@ namespace browser2appdemoiosxamarin
     {
         partial void BotonPagar_TouchUpInside(UIButton sender)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine("TouchUpInside!");
+            KhenshinInterface.StartEngineWithPaymentExternalId("1234", "", false, (Foundation.NSUrl obj) => { System.Diagnostics.Debug.WriteLine("EXITO!"); },
+                                                               (Foundation.NSUrl obj) => { System.Diagnostics.Debug.WriteLine("FRACASO :("); }, false);
         }
 
         protected ViewController(IntPtr handle) : base(handle)

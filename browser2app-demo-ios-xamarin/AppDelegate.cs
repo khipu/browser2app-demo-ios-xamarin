@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using UIKit;
 using bindingkhenshin;
+using ObjCRuntime;
+
 
 namespace browser2appdemoiosxamarin
 {
@@ -26,15 +28,29 @@ namespace browser2appdemoiosxamarin
             NSUserDefaults.StandardUserDefaults.Synchronize();
 
             System.Diagnostics.Debug.WriteLine("Pre ProcessHeader");
-            ProcessHeader p = NSBundle.MainBundle.LoadNib("PaymentProcessHeader", this, null).GetItem<ProcessHeader>(0);
+            // ProcessHeader p = NSBundle.MainBundle.LoadNib("OperationProcessHeader", null, null).GetItem<ProcessHeader>(0);
 
+            var oph = NSBundle.MainBundle.LoadNib("OperationProcessHeader", this, null).ValueAt(0);
+            var ph = Runtime.GetNSObject(oph);
+
+			var opf = NSBundle.MainBundle.LoadNib("OperationProcessFailure", this, null).ValueAt(0);
+			var pf = Runtime.GetNSObject(opf);
+
+            System.Diagnostics.Debug.WriteLine("Is Running Automaton?");
+            System.Diagnostics.Debug.WriteLine(KhenshinInterface.IsRunningAutomaton);
 
             KhenshinInterface.InitWithNavigationBarCenteredLogo(new UIImage(), new UIImage(),
                                                                 new NSUrl("https://servipag.browser2app.com/api/automata/"),
                                                                 new NSUrl("https://servipag.browser2app.com/api/automata/"),
-                                                                null,
-                                                                null, null, null, true, 2, false, false,
-                                                                UIColor.LightGray, UIColor.DarkGray, UIColor.Red, UIColor.White, null);
+                                                                ph,
+                                                                pf,
+                                                                pf,
+                                                                pf,
+                                                                true,
+                                                                2,
+                                                                false,
+                                                                false,
+                                                                UIColor.LightGray, UIColor.DarkGray, UIColor.Red, UIColor.White, UIFont.FromName("Avenir Next Condensed", 15));
 
             System.Diagnostics.Debug.WriteLine("Fin FinishedLaunching");
             return true;
