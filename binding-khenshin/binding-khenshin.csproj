@@ -82,7 +82,7 @@
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\uSQ-9U-R4U-view-1vf-oD-is6.nib" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\..\Library\Developer\Xcode\DerivedData\Core-bsrzjsmggiifkdernkdmbstwlqkz\Build\Products\Debug-iphonesimulator\khenshin.framework">
+    <NativeReference Include="..\..\khenshin-pod\Products\khenshin.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
