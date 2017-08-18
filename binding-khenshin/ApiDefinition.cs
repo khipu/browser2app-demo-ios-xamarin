@@ -50,7 +50,7 @@ namespace bindingkhenshin
 		// @required -(void)configureWithPaymentSubject:(NSString *)subject formattedAmountAsCurrency:(NSString *)amount merchantName:(NSString *)merchantName merchantImageURL:(NSString *)merchantImageURL paymentMethod:(NSString *)paymentMethod title:(NSString *)title message:(NSString *)message finish:(void (^)(void))finish;
 		[Abstract]
 		[Export("configureWithPaymentSubject:formattedAmountAsCurrency:merchantName:merchantImageURL:paymentMethod:title:message:finish:")]
-        void ConfigureWithPaymentSubject(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod, string title, string message, NSObject finish); // Action
+        void ConfigureWithPaymentSubject(string subject, string amount, string merchantName, string merchantImageURL, string paymentMethod, string title, string message, Action finish); // Action
 	}
 
 	// @interface KhenshinInterface : NSObject
@@ -71,6 +71,10 @@ namespace bindingkhenshin
 		[Static]
 		[Export("initWithNavigationBarCenteredLogo:NavigationBarLeftSideLogo:automatonAPIURL:cerebroAPIURL:processHeader:processFailure:processSuccess:processWarning:allowCredentialsSaving:mainButtonStyle:hideWebAddressInformationInForm:useBarCenteredLogoInForm:principalColor:darkerPrincipalColor:secondaryColor:navigationBarTextTint:font:skipExitPage:")]
 		void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, NSObject processHeader, NSObject processFailure, NSObject processSuccess, NSObject processWarning, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font, bool skipExitPage);
+
+		[Static]
+		[Export("initWithNavigationBarCenteredLogo:NavigationBarLeftSideLogo:automatonAPIURL:cerebroAPIURL:processHeader:allowCredentialsSaving:mainButtonStyle:hideWebAddressInformationInForm:useBarCenteredLogoInForm:principalColor:darkerPrincipalColor:secondaryColor:navigationBarTextTint:font:skipExitPage:")]
+		void InitWithNavigationBarCenteredLogo(UIImage barCenteredLogo, UIImage barLeftSideLogo, NSUrl automatonAPIURL, NSUrl cerebroAPIURL, NSObject processHeader, bool allowCredentialsSaving, nint mainButtonStyle, bool hideWebAddressInformationInForm, bool useBarCenteredLogoInForm, UIColor principalColor, UIColor darkerPrincipalColor, UIColor secondaryColor, UIColor navigationBarTextTint, UIFont font, bool skipExitPage);
 
 		// +(BOOL)isRunningAutomaton;
 		[Static]

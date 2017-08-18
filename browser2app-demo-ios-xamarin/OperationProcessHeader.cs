@@ -22,12 +22,6 @@ namespace browser2appdemoiosxamarin
 			return v;
 		}
 
-		public override void AwakeFromNib()
-		{
-
-			System.Diagnostics.Debug.WriteLine("En AFN, OperationProcessHeader");
-		}
-
         public void ConfigureWithSubject(string _subject, string _amount, string merchantName, string merchantImageURL, string paymentMethod)
         {
             subject.Text = _subject;

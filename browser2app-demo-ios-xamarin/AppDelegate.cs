@@ -24,35 +24,27 @@ namespace browser2appdemoiosxamarin
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
 
-            NSUserDefaults.StandardUserDefaults.SetBool(false, @"KH_SHOW_HOW_IT_WORKS");
+            NSUserDefaults.StandardUserDefaults.SetBool(true, @"KH_SHOW_HOW_IT_WORKS");
             NSUserDefaults.StandardUserDefaults.Synchronize();
 
-            System.Diagnostics.Debug.WriteLine("Pre ProcessHeader");
-            // ProcessHeader p = NSBundle.MainBundle.LoadNib("OperationProcessHeader", null, null).GetItem<ProcessHeader>(0);
 
-            var oph = NSBundle.MainBundle.LoadNib("OperationProcessHeader", this, null).ValueAt(0);
-            var ph = Runtime.GetNSObject(oph);
-
-			var opf = NSBundle.MainBundle.LoadNib("OperationProcessFailure", this, null).ValueAt(0);
-			var pf = Runtime.GetNSObject(opf);
-
-            System.Diagnostics.Debug.WriteLine("Is Running Automaton?");
-            System.Diagnostics.Debug.WriteLine(KhenshinInterface.IsRunningAutomaton);
 
             KhenshinInterface.InitWithNavigationBarCenteredLogo(new UIImage(), new UIImage(),
-                                                                //new NSUrl("https://servipag.browser2app.com/api/automata/"),
-                                                                //new NSUrl("https://servipag.browser2app.com/api/automata/"),
-																new NSUrl("https://khipu.com/app/2.0/"),
-																new NSUrl("https://khipu.com/cerebro/"),
-                                                                ph,
-                                                                pf,
-                                                                pf,
-                                                                pf,
+                                                                new NSUrl("https://cmr.browser2app.com/api/automata/"),
+                                                                new NSUrl("https://cmr.browser2app.com/api/automata/"),
+                                                                //new NSUrl("https://khipu.com/app/2.0/"),
+                                                                //new NSUrl("https://khipu.com/cerebro/"),
+                                                                OperationProcessHeader.Create(),
                                                                 true,
                                                                 2,
                                                                 false,
                                                                 false,
-                                                                UIColor.LightGray, UIColor.DarkGray, UIColor.Red, UIColor.White, UIFont.FromName("Avenir Next Condensed", 15));
+                                                                UIColor.LightGray,
+                                                                UIColor.DarkGray,
+                                                                UIColor.Red,
+                                                                UIColor.White,
+                                                                UIFont.FromName("Avenir Next Condensed", 15),
+                                                                false);
 
             System.Diagnostics.Debug.WriteLine("Fin FinishedLaunching");
             return true;
