@@ -10,8 +10,12 @@ namespace browser2appdemoiosxamarin
         partial void BotonPagar_TouchUpInside(UIButton sender)
         {
             System.Diagnostics.Debug.WriteLine("TouchUpInside!");
-            KhenshinInterface.StartEngineWithPaymentExternalId("1234", "", false, (Foundation.NSUrl obj) => { System.Diagnostics.Debug.WriteLine("EXITO!"); },
-                                                               (Foundation.NSUrl obj) => { System.Diagnostics.Debug.WriteLine("FRACASO :("); }, false);
+            KhenshinInterface.StartEngineWithPaymentExternalId("5w1kd4de7owu"
+                                                               , ""
+                                                               , false
+                                                               , (Foundation.NSUrl obj) => { System.Diagnostics.Debug.WriteLine("EXITO!"); }
+                                                               , (Foundation.NSUrl obj) => { System.Diagnostics.Debug.WriteLine("FRACASO :("); }
+                                                               , true);
         }
 
         protected ViewController(IntPtr handle) : base(handle)

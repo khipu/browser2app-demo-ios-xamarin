@@ -34,9 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="khenshin.linkwith.cs">
-      <DependentUpon>khenshin.a</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
@@ -46,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Resources\khenshin.bundle\Base.lproj\" />
+    <Folder Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\khenshin.bundle\Actions.js" />
@@ -64,9 +63,11 @@
     <BundleResource Include="Resources\khenshin.bundle\glyphicons-halflings-regular.ttf" />
     <BundleResource Include="Resources\khenshin.bundle\p22-underground-bold.ttf" />
     <BundleResource Include="Resources\khenshin.bundle\p22-underground.ttf" />
+    <BundleResource Include="Resources\khenshin.bundle\es.lproj\bank.strings" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\4st-1A-Kej-view-sf3-55-bAE.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\8fn-bm-NIc-view-avz-vp-aVL.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\ExitViewController.nib" />
+    <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\fMn-RK-eYE-view-WF2-gw-Hs0.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\IhM-Rb-vej-view-hoS-FJ-CZ1.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\Info.plist" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\KHFormViewController.nib" />
@@ -74,16 +75,17 @@
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\KHPosBankChooserViewController.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\KHSHNUIViewController.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\NavigationController.nib" />
-    <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\TermsAndConditions.nib" />
-    <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\UIViewController-uSQ-9U-R4U.nib" />
-    <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\fMn-RK-eYE-view-WF2-gw-Hs0.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\ojb-1Q-hPK-view-9sJ-pC-9j5.nib" />
+    <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\TermsAndConditions.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\tKZ-g9-9P9-view-J90-a4-rk5.nib" />
+    <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\UIViewController-uSQ-9U-R4U.nib" />
     <BundleResource Include="Resources\khenshin.bundle\Base.lproj\bank.storyboardc\uSQ-9U-R4U-view-1vf-oD-is6.nib" />
-    <BundleResource Include="Resources\khenshin.bundle\es.lproj\bank.strings" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="khenshin.a" />
+    <NativeReference Include="..\..\..\Library\Developer\Xcode\DerivedData\Core-bsrzjsmggiifkdernkdmbstwlqkz\Build\Products\Debug-iphonesimulator\khenshin.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

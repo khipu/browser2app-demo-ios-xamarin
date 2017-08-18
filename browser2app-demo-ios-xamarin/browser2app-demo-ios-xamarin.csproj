@@ -170,6 +170,10 @@
       <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
+    <NativeReference Include="..\Frameworks\PPTopMostController.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -40,8 +40,10 @@ namespace browser2appdemoiosxamarin
             System.Diagnostics.Debug.WriteLine(KhenshinInterface.IsRunningAutomaton);
 
             KhenshinInterface.InitWithNavigationBarCenteredLogo(new UIImage(), new UIImage(),
-                                                                new NSUrl("https://servipag.browser2app.com/api/automata/"),
-                                                                new NSUrl("https://servipag.browser2app.com/api/automata/"),
+                                                                //new NSUrl("https://servipag.browser2app.com/api/automata/"),
+                                                                //new NSUrl("https://servipag.browser2app.com/api/automata/"),
+																new NSUrl("https://khipu.com/app/2.0/"),
+																new NSUrl("https://khipu.com/cerebro/"),
                                                                 ph,
                                                                 pf,
                                                                 pf,
