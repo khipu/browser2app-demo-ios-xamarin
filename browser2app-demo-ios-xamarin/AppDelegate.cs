@@ -44,7 +44,7 @@ namespace browser2appdemoiosxamarin
                                                                 UIColor.Red,
                                                                 UIColor.White,
                                                                 UIFont.FromName("Avenir Next Condensed", 15),
-                                                                false);
+                                                                true);
 
             System.Diagnostics.Debug.WriteLine("Fin FinishedLaunching");
             return true;
