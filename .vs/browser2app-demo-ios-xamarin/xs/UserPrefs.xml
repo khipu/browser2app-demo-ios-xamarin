@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{66BB2B09-23E1-4A9F-955D-05BFAC170A97}|Default">
+  <MonoDevelop.Ide.ItemProperties.browser2app-demo-ios-xamarin PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.5c5d353ab1476ef0fdbff31df6f121a5b494464b" automaticSigning="True">
+    <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="LX54HLSSZ2" TeamId="2X63E3W773" />
+  </MonoDevelop.Ide.ItemProperties.browser2app-demo-ios-xamarin>
+  <MonoDevelop.Ide.Workbench ActiveDocument="browser2app-demo-ios-xamarin/ViewController.cs">
+    <Files>
+      <File FileName="browser2app-demo-ios-xamarin/Main.cs" Line="16" Column="1" />
+      <File FileName="binding-khenshin/ApiDefinition.cs" Line="9" Column="2" />
+      <File FileName="browser2app-demo-ios-xamarin/OperationProcessHeader.xib" />
+      <File FileName="browser2app-demo-ios-xamarin/Info.plist" />
+      <File FileName="browser2app-demo-ios-xamarin/OperationProcessHeader.cs" Line="1" Column="1" />
+      <File FileName="browser2app-demo-ios-xamarin/ViewController.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

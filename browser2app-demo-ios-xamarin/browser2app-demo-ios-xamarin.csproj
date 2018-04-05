@@ -18,7 +18,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Emilio Davis (JE42N2LGXF)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -29,6 +29,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchExtraArgs>-gcc_flags "-ObjC -lxml2 -lsqlite3"</MtouchExtraArgs>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -36,13 +37,14 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Emilio Davis (JE42N2LGXF)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -50,7 +52,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Emilio Davis (JE42N2LGXF)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchLink>None</MtouchLink>
@@ -58,6 +60,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchExtraArgs>-gcc_flags "-ObjC -lxml2 -lsqlite3"</MtouchExtraArgs>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,7 +70,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Emilio Davis (JE42N2LGXF)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -79,6 +82,7 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -121,7 +125,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <NativeReference Include="..\Frameworks\ActionSheetPicker_3_0.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
     <NativeReference Include="..\Frameworks\AFNetworking.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+    <NativeReference Include="..\Frameworks\IQKeyboardManager.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
@@ -129,43 +141,24 @@
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
-    <NativeReference Include="..\Frameworks\GGLAnalytics.framework">
+    <NativeReference Include="..\Frameworks\JVFloatLabeledTextField.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+    <NativeReference Include="..\Frameworks\PPTopMostController.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
     <NativeReference Include="..\Frameworks\RaptureXML.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
+      <LinkerFlags>-lxml2</LinkerFlags>
     </NativeReference>
     <NativeReference Include="..\Frameworks\Toast.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
     <NativeReference Include="..\Frameworks\TTTAttributedLabel.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\Frameworks\FirebaseAnalytics.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\Frameworks\FirebaseCore.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\Frameworks\FirebaseInstanceID.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\Frameworks\GGLCore.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\Frameworks\libGoogleAnalytics.a">
-      <Kind>Static</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\Frameworks\PPTopMostController.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>

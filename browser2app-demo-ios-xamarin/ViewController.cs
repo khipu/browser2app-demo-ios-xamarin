@@ -25,7 +25,7 @@ namespace browser2appdemoiosxamarin
                                                                                       , "payer_email", "test@mail.com"
                                                                                       , "khipu_rut", "10.706.077-4"
                                                                                       , "khipu_email", "transferencias@khipu.com")
-                                                         , ""
+                                                         , "10"
                                                          , (Foundation.NSUrl obj) =>
                                                          {
                                                              System.Diagnostics.Debug.WriteLine("EXITO!");

@@ -167,11 +167,6 @@ namespace bindingkhenshin
 		[Export("startEngineWithAutomatonId:animated:parameters:userIdentifier:success:failure:")]
 		void StartEngineWithAutomatonId(string automatonId, bool animated, NSDictionary parameters, string userIdentifier, Action<NSUrl> success, Action<NSUrl> failure);
 
-		// +(void)startEngineWithAutomatonId:(NSString *)automatonId animated:(BOOL)animated parameters:(NSDictionary *)parameters userIdentifier:(NSString *)userIdentifier navigationController:(UINavigationController *)navigationController success:(void (^)(NSUrl *))success failure:(void (^)(NSUrl *))failure;
-		[Static]
-		[Export("startEngineWithAutomatonId:animated:parameters:userIdentifier:navigationController:success:failure:")]
-		void StartEngineWithAutomatonId(string automatonId, bool animated, NSDictionary parameters, string userIdentifier, UINavigationController navigationController, Action<NSUrl> success, Action<NSUrl> failure);
-
 		// +(void)startEngineWithAutomatonRequestId:(NSString *)automatonRequestId animated:(BOOL)animated userIdentifier:(NSString *)userIdentifier navigationController:(UINavigationController *)navigationController success:(void (^)(NSUrl *))success failure:(void (^)(NSUrl *))failure;
 		[Static]
 		[Export("startEngineWithAutomatonRequestId:animated:userIdentifier:navigationController:success:failure:")]
